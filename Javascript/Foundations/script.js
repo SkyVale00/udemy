@@ -652,3 +652,324 @@ console.log(totals);
    Objects & Properties
    --------------------- */
 
+
+/*
+    Unlike an array where the order matter, the order does NOT matter in objects.
+
+*/
+
+/*
+// this is an OBJECT LITERAL
+// the PROPERTIES are considered KEYVALUE PAIRS
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mike', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false
+};
+
+// Alternative way to create an object
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+
+
+console.log(john);
+console.log(jane);
+
+
+// You can access properties of an object in several different ways
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
+
+// MUTATE data in an object
+john.job = 'designer';
+john['isMarried'] = true;
+*/
+
+
+
+// ===============================================
+
+/* ---------------------
+   Objects & Methods
+   --------------------- */
+
+
+/*
+
+Functions that are attached to objects are called METHODS.
+
+An array is an object.
+Methods of an array include .pop and .push.
+
+*/
+
+/*
+// calcAge is a method of the john object
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mike', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+    calcAge: function() {
+        // THIS keyword refer to the current object
+        this.age = 2020 - this.birthYear;
+    }
+};
+
+// call a method using DOT NOTATION
+john.calcAge();
+console.log(john);
+*/
+
+
+
+// ===============================================
+
+/* ---------------------
+   CODING CHALLENGE #4
+   --------------------- */
+
+/*
+
+Let's remember the first coding challenge where Mark and John compared their BMIs. Let's now implement the same functionality with objects and methods.
+
+1. For each of them, create an object with properties for their full name, mass, and height.
+2. Then, add a method to each object to calculate the BMI. Save the BMI to the object and also return it from the method.
+3. In the end, log to the console who has the highest BMI, together with the full name and the repective BMI. Don't forget they might have the same BMI.
+
+Remember: 
+BMI = masss / height^2
+mass in kg and height in centimeters
+
+Good luck.
+
+*/
+
+/*
+var mark = {
+    fullName: 'Mark Markson',
+    mass: 56,
+    height: 179,
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height^2);
+        return this.BMI;
+    }
+};
+
+var john = {
+    fullName: 'John Smith',
+    mass: 80, 
+    height: 190,
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height^2);
+        return this.BMI;
+    }
+};
+
+console.log(mark.calcBMI());
+console.log(john.calcBMI());
+
+if (mark.BMI > john.BMI) {
+    console.log(mark.fullName + ' at ' + mark.BMI + ' BMI is thiccer than ' + john.fullName +  'who has ' + john.BMI + ' BMI.');
+
+} else if (john.BMI > mark.BMI) {
+    console.log(john.fullName + ' at ' + john.BMI + ' BMI is thiccer than ' + mark.fullName + ' who has ' + mark.BMI + ' BMI.');
+
+} else {
+    console.log(mark.fullName + ' and ' + john.fullName + ' have the same BMI at ' + mark.BMI);
+}
+*/
+
+
+// ===============================================
+
+/* ---------------------
+   Loops & Iterations
+   --------------------- */
+
+/*
+// FOR LOOPS
+
+// Print 0-9 to console
+// it will break the loop once i < 10 is no longer true
+for (var i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+// Loop through an array
+var john = ['john', 'smith', 1990, 'designer', false, '---'];
+for (var i = 0; i < john.length; i++) {
+    console.log(john[i]);
+}
+
+// Looping Backwards
+for (var i = john.length - 1; i >= 0; i--) {
+    console.log(john[i]); 
+}
+
+
+// ------
+
+// WHILE LOOPS
+
+// This will work the same as the above for loop.
+// You need to define the iterator (i) for a while loop.
+var i = 0;
+while (i < john.length) {
+    console.log(john[i]);
+    i++;
+}
+
+
+// ------
+
+// Continue & Break statements
+
+// Continue
+for (var i = 0; i < john.length; i++) {
+
+    // if an element in the array is not a string, then it will restart the loop and not go on to the next code block
+    if (typeof john[i] !== 'string') continue;
+
+    console.log(john[i]);
+
+}
+
+
+// Break
+for (var i = 0; i < john.length; i++) {
+
+    // if an element in the array is not a string, then it will exit the loop completely
+    if (typeof john[i] !== 'string') break;
+
+    console.log(john[i]);
+    
+}
+*/
+
+
+// ===============================================
+
+/* ---------------------
+   CODING CHALLENGE #5
+   --------------------- */
+
+/*
+
+Final coding challenge of this section! 
+
+Remember the tip calculator challenge? Let's create a more advanced version using everything we learned!
+
+This time, John and his family went to 5 different restaurants. The bills were $124, $48, $268, $180, and $42.
+
+John likes to tip 20% of the bill when the bill is less than 50, 15% when the bill is between 50 and 200, and 10% when the bill is more than 200.
+
+Implement a tip calculator using objects and loops:
+1. Create an object with an array for the bill values.
+2. Add a method to calculate the tip.
+3. This method should include a loop to iterate over all the paid bills and do the tip calculations.
+4. As an output, create 1) a new array containing all tips, and 2) an array containing final paid amounts (bill + tip). HINT: Start with two empty arrays [] as properties and then fill them up in the loop.
+
+---
+EXTRA AFTER FINISHING:
+
+Mark's family also went on a holiday, going to 4 different restaurants. The bills were $77, $375, $110, and $45. 
+
+Mark likes to tip 20% of the bill when the bill is less than 100, 10% when the bill is between 100 and 300, and 25% if the bill is more than 300.
+
+5. Implement the same functionality as before, this time using Mark's tipping rules.
+6. Create a function (not a method) to calculate the average of a given array of tips. HINT: Loop over the array and in each iteration, store the current sum in a variable (starting from 0). After you have the sum of the array, divide it by its length to calculate the average.
+7. Calculate the tip for each family.
+8. Log to the console which family paid the highest tips on average.
+
+Good luck.
+
+*/
+
+// function that rounds decimal to format like money
+function roundDecimal (number) {
+    return Math.round(number * 100) / 100;
+}
+
+// object for john
+var johnExpenses = {
+    bills: [124, 48, 268, 180, 42],
+    tips: [],
+    totals: [],
+    calcTip: function() {
+        for (var i = 0; i < this.bills.length; i++) {
+            // calculates the tip based on the bill amount, rounds the total, and then adds to tip array
+            if (this.bills[i] < 50) {
+                this.tips.push(roundDecimal(this.bills[i] * 0.20));
+
+            } else if (this.bills[i] >= 50 && this.bills[i] < 200 ) {
+                this.tips.push(roundDecimal(this.bills[i] * 0.15));
+
+            } else if (this.bills[i] > 200) {
+                this.tips.push(roundDecimal(this.bills[i] * 0.10));
+            }
+        }
+    },
+    calcTotal: function() {
+        for (var i = 0; i < this.bills.length; i++) {
+            this.totals.push(this.bills[i] + this.tips[i]);
+        }
+    }
+}
+
+
+// calculate tips for john
+johnExpenses.calcTip();
+console.log(johnExpenses.tips);
+
+// calculate totals for john
+johnExpenses.calcTotal();
+console.log(johnExpenses.totals);
+
+
+// ---
+
+// object for mark
+var markExpenses = {
+    bills: [77, 375, 110, 45],
+    tips: [],
+    totals: [],
+}
+
+// calculate tips for mark
+function calcTipMark() {
+
+    for (var i = 0; i < markExpenses.bills.length; i++) {
+        // calculates the tip based on the bill amount, rounds the total, and then adds to tip array
+        if (markExpenses.bills[i] < 100) {
+            markExpenses.tips.push(roundDecimal(markExpenses.bills[i] * 0.20));
+
+        } else if (markExpenses.bills[i] >= 100 && markExpenses.bills[i] < 300 ) {
+            markExpenses.tips.push(roundDecimal(markExpenses.bills[i] * 0.10));
+
+        } else if (markExpenses.bills[i] > 300) {
+            markExpenses.tips.push(roundDecimal(markExpenses.bills[i] * 0.25));
+        }
+    }
+
+}
+calcTipMark();
+console.log(markExpenses.tips);
+
+// calculate totals for mark
+function calcTotalMark() {
+    for (var i = 0; i < markExpenses.bills.length; i++) {
+        markExpenses.totals.push(markExpenses.bills[i] + markExpenses.tips[i]);
+    }
+}
+calcTotalMark();
+console.log(markExpenses.totals);
